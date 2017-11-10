@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: La Geekipedia de Ernesto
+Main-Class: Bienvenida
+X-COMMENT: Curso Java
