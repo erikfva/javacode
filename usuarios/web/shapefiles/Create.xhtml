@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ShapefilesCreateDlg" widgetVar="ShapefilesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateShapefilesTitle}">
+            <h:form id="ShapefilesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{shapefilesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_idshapefile}" for="idshapefile" />
+                        <p:inputText id="idshapefile" value="#{shapefilesController.selected.idshapefile}" title="#{bundle.CreateShapefilesTitle_idshapefile}" required="true" requiredMessage="#{bundle.CreateShapefilesRequiredMessage_idshapefile}"/>
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_idaplicacion}" for="idaplicacion" />
+                        <p:inputText id="idaplicacion" value="#{shapefilesController.selected.idaplicacion}" title="#{bundle.CreateShapefilesTitle_idaplicacion}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_token}" for="token" />
+                        <p:inputText id="token" value="#{shapefilesController.selected.token}" title="#{bundle.CreateShapefilesTitle_token}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_idusuario}" for="idusuario" />
+                        <p:inputText id="idusuario" value="#{shapefilesController.selected.idusuario}" title="#{bundle.CreateShapefilesTitle_idusuario}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{shapefilesController.selected.tipo}" title="#{bundle.CreateShapefilesTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_folder}" for="folder" />
+                        <p:inputText id="folder" value="#{shapefilesController.selected.folder}" title="#{bundle.CreateShapefilesTitle_folder}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_narchivo}" for="narchivo" />
+                        <p:inputText id="narchivo" value="#{shapefilesController.selected.narchivo}" title="#{bundle.CreateShapefilesTitle_narchivo}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_narchivoorigen}" for="narchivoorigen" />
+                        <p:inputText id="narchivoorigen" value="#{shapefilesController.selected.narchivoorigen}" title="#{bundle.CreateShapefilesTitle_narchivoorigen}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_fechacreacion}" for="fechacreacion" />
+                        <p:calendar id="fechacreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{shapefilesController.selected.fechacreacion}" title="#{bundle.EditShapefilesTitle_fechacreacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_tamano}" for="tamano" />
+                        <p:inputText id="tamano" value="#{shapefilesController.selected.tamano}" title="#{bundle.CreateShapefilesTitle_tamano}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_srid}" for="srid" />
+                        <p:inputText id="srid" value="#{shapefilesController.selected.srid}" title="#{bundle.CreateShapefilesTitle_srid}" />
+                        <p:outputLabel value="#{bundle.CreateShapefilesLabel_tipogeom}" for="tipogeom" />
+                        <p:inputText id="tipogeom" value="#{shapefilesController.selected.tipogeom}" title="#{bundle.CreateShapefilesTitle_tipogeom}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{shapefilesController.create}" value="#{bundle.Save}" update="display,:ShapefilesListForm:datalist,:growl" oncomplete="handleSubmit(args,'ShapefilesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ShapefilesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ShapefilesEditDlg" widgetVar="ShapefilesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditShapefilesTitle}">
+            <h:form id="ShapefilesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{shapefilesController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_idshapefile}" for="idshapefile" />
+                        <p:inputText id="idshapefile" value="#{shapefilesController.selected.idshapefile}" title="#{bundle.EditShapefilesTitle_idshapefile}" required="true" requiredMessage="#{bundle.EditShapefilesRequiredMessage_idshapefile}"/>
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_idaplicacion}" for="idaplicacion" />
+                        <p:inputText id="idaplicacion" value="#{shapefilesController.selected.idaplicacion}" title="#{bundle.EditShapefilesTitle_idaplicacion}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_token}" for="token" />
+                        <p:inputText id="token" value="#{shapefilesController.selected.token}" title="#{bundle.EditShapefilesTitle_token}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_idusuario}" for="idusuario" />
+                        <p:inputText id="idusuario" value="#{shapefilesController.selected.idusuario}" title="#{bundle.EditShapefilesTitle_idusuario}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{shapefilesController.selected.tipo}" title="#{bundle.EditShapefilesTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_folder}" for="folder" />
+                        <p:inputText id="folder" value="#{shapefilesController.selected.folder}" title="#{bundle.EditShapefilesTitle_folder}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_narchivo}" for="narchivo" />
+                        <p:inputText id="narchivo" value="#{shapefilesController.selected.narchivo}" title="#{bundle.EditShapefilesTitle_narchivo}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_narchivoorigen}" for="narchivoorigen" />
+                        <p:inputText id="narchivoorigen" value="#{shapefilesController.selected.narchivoorigen}" title="#{bundle.EditShapefilesTitle_narchivoorigen}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_fechacreacion}" for="fechacreacion" />
+                        <p:calendar id="fechacreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{shapefilesController.selected.fechacreacion}" title="#{bundle.EditShapefilesTitle_fechacreacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_tamano}" for="tamano" />
+                        <p:inputText id="tamano" value="#{shapefilesController.selected.tamano}" title="#{bundle.EditShapefilesTitle_tamano}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_srid}" for="srid" />
+                        <p:inputText id="srid" value="#{shapefilesController.selected.srid}" title="#{bundle.EditShapefilesTitle_srid}" />
+                        <p:outputLabel value="#{bundle.EditShapefilesLabel_tipogeom}" for="tipogeom" />
+                        <p:inputText id="tipogeom" value="#{shapefilesController.selected.tipogeom}" title="#{bundle.EditShapefilesTitle_tipogeom}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{shapefilesController.update}" value="#{bundle.Save}" update="display,:ShapefilesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ShapefilesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ShapefilesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

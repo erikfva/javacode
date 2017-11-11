@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComportamientoCreateDlg" widgetVar="ComportamientoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateComportamientoTitle}">
+            <h:form id="ComportamientoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comportamientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateComportamientoLabel_idcomportamiento}" for="idcomportamiento" />
+                        <p:inputText id="idcomportamiento" value="#{comportamientoController.selected.idcomportamiento}" title="#{bundle.CreateComportamientoTitle_idcomportamiento}" required="true" requiredMessage="#{bundle.CreateComportamientoRequiredMessage_idcomportamiento}"/>
+                        <p:outputLabel value="#{bundle.CreateComportamientoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{comportamientoController.selected.descripcion}" title="#{bundle.CreateComportamientoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateComportamientoRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.CreateComportamientoLabel_categoria}" for="categoria" />
+                        <p:inputText id="categoria" value="#{comportamientoController.selected.categoria}" title="#{bundle.CreateComportamientoTitle_categoria}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comportamientoController.create}" value="#{bundle.Save}" update="display,:ComportamientoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComportamientoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComportamientoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
